@@ -8,7 +8,10 @@
   "dependencies": {
     "react": "15.0.2",
     "react-native": "^0.26.2",
-    "react-native-swiper": "git://github.com/leecade/react-native-swiper.git"
+    "react-native-overlay": "git+https://github.com/aerofs/react-native-overlay.git",
+    "react-native-swiper": "git://github.com/leecade/react-native-swiper.git",
+    "react-native-tableview": "^1.5.2",
+    "react-native-vector-icons": "^2.0.3"
   },
   "devDependencies": {
     "rnpm-plugin-upgrade": "^0.26.0"

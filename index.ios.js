@@ -1,27 +1,49 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-console.log('starting...')
-
 import React, { Component } from 'react';
-import Main from './app/Main';
 
 import {
   AppRegistry,
+  StyleSheet,
   View,
   Text,
-} from 'react-native';
+} from 'react-native'
 
-console.log('starting...')
+import CardSwiper from './app/CardSwiper';
+import Nav from './app/Nav';
+
+import { FIBONACCI } from './app/settingsValues';
+
+
+var Overlay = require('react-native-overlay');
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
+});
 
 class AgileCards extends Component {
+
+  state = {
+    settings: {
+      cardSequence: FIBONACCI,
+      maxCard: '13',
+    },
+  }
+
+  onSettingsChange = (newSettings) => {
+    this.setState({
+      settings: { ...newSettings },
+    })
+  }
+
   render() {
-    return <Main/>
+    return (
+      <View>
+        <CardSwiper settings={this.state.settings} />
+        <Nav settings={this.state.settings} onSettingsChange={this.onSettingsChange}/>
+      </View>
+    );
   }
 }
 
-console.log('about to register...');
 AppRegistry.registerComponent('AgileCards', () => AgileCards);
