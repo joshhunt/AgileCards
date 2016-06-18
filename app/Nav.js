@@ -29,9 +29,7 @@ const styles = StyleSheet.create({
 
 const { height: windowHeight, width: windowWidth } = Dimensions.get('window');
 
-console.log('windowHeight:', windowHeight);
-console.log('windowWidth:', windowWidth);
-
+const settingsHeight = 311;
 const popupOffset = 10
 const popupDisplayArea = {
   x: popupOffset,
@@ -52,15 +50,13 @@ export default class Nav extends Component {
       const newState = {
         isVisible: true,
         buttonRect: {x: px, y: py, width: width, height: height},
-        popupHeight: Math.min(popupDisplayArea.height - (py + height) - 8, 421)
+        popupHeight: Math.min(popupDisplayArea.height - (py + height) - 8, settingsHeight)
       };
-      console.log(newState);
       this.setState(newState);
     });
   };
 
   closePopover = (ev) => {
-    console.log('closePopover called with target of', ev.target);
     this.setState({isVisible: false});
   };
 

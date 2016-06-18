@@ -12,6 +12,7 @@ import Nav from './app/Nav';
 
 import { FIBONACCI } from './app/settingsValues';
 
+console.disableYellowBox = true;
 
 var Overlay = require('react-native-overlay');
 

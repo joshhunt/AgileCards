@@ -116,12 +116,12 @@ export default class Settings extends Component {
           </Cell>
         </Section>
 
-        <Section label="Extras">
+        {/*<Section label="Extras">
           <Cell style={[styles.cell, styles.splitCell]}>
             <Text style={styles.cellText}>Last card emoji</Text>
             <Switch />
           </Cell>
-        </Section>
+        </Section> */}
       </TableView>
     );
   }
