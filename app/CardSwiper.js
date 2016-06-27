@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import please from 'pleasejs';
 
 import {
   StyleSheet,
@@ -8,36 +7,7 @@ import {
 
 import Swiper from 'react-native-swiper';
 import Card from './Card';
-import { CARDS_FOR_SEQUENCE } from './settingsValues';
-
-// 60
-// -
-// 25
-range = 60-25
-
-
-function colorForCard(index, maxColors) {
-  const baseColor = {
-    h: 204,
-    s: .70,
-    v: .1,
-  };
-
-  const min = 60;
-  const max = 25;
-  const range = max - min;
-  const step = range / maxColors;
-  const value = min + (step * index);
-  const percentage = value;
-
-  const colors = please.make_scheme(baseColor, {
-    golden: false,
-    colors_returned: maxColors,
-  });
-
-  const ccc = `hsl(204, 70%, ${percentage}%)`;
-  return ccc;
-}
+import { CARDS_FOR_SEQUENCE, COLORS } from './settingsValues';
 
 var styles = StyleSheet.create({
   dot: {
@@ -88,11 +58,12 @@ export default function CardSwiper({ settings }) {
   };
 
   const allCards = cardsForSettings(settings);
+  const colors = COLORS[settings.color];
 
   return (
-    <Swiper {...swiperProps}>
+    <Swiper {...swiperProps} testID="swiper">
       {allCards.map((cardData, index) => {
-        return <Card key={cardData} color={colorForCard(index, allCards.length)}>{cardData}</Card>
+        return <Card key={cardData} colors={colors[index]}>{cardData}</Card>
       })}
     </Swiper>
   );

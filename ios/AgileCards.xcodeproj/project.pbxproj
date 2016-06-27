@@ -27,10 +27,10 @@
 		35FB040141C24B9680E2AB9A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADCED415AC484AED85F8E21F /* MaterialIcons.ttf */; };
 		50C0305CFB21485BA292E5EC /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C74F56E5AEFA451A96EB828C /* FontAwesome.ttf */; };
 		559B85700C9F47A8A71A0FFC /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8EBDBF901E941B2B79179CF /* Zocial.ttf */; };
-		78346731645F49F076C8BBD8 /* libPods-AgileCards.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5959207B1DEC9FC7C18F33 /* libPods-AgileCards.a */; };
 		7E09CC0CB0494D8F9C3309AF /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E05355FFEFB346F2A4EE0B15 /* Ionicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		938101CFF4994CEFB6CF445B /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B826A03D1BA84BCBA06E1F7A /* EvilIcons.ttf */; };
+		9AF43C4F564E4F74BCCE9CD4 /* libPods-AgileCards.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D0EDC047A14969427FB1A1 /* libPods-AgileCards.a */; };
 		A20B816DD0674433A5911BAC /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E555ACB5E3142A9B41D856B /* libRNVectorIcons.a */; };
 		A73F135564704C2AA0C87A87 /* libRNTableView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0E25274BAC474BB4A3F797 /* libRNTableView.a */; };
 		E04B86CD4296482EA86974C6 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E37DD523BC94A6FB19305C3 /* Foundation.ttf */; };
@@ -150,6 +150,7 @@
 		038D7D171CFC7CA400876AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		038D7D1D1CFC7CDD00876AE3 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		0E37DD523BC94A6FB19305C3 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		128D2E339E6B9F0886AC581B /* Pods-AgileCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AgileCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AgileCards/Pods-AgileCards.debug.xcconfig"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* AgileCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgileCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,16 +164,14 @@
 		670A206F1358447E97F6EED9 /* RNTableView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNTableView.xcodeproj; path = "../node_modules/react-native-tableview/RNTableView.xcodeproj"; sourceTree = "<group>"; };
 		6A0E25274BAC474BB4A3F797 /* libRNTableView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNTableView.a; sourceTree = "<group>"; };
 		6E555ACB5E3142A9B41D856B /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		75D0EDC047A14969427FB1A1 /* libPods-AgileCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AgileCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		7E5959207B1DEC9FC7C18F33 /* libPods-AgileCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AgileCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8044323828E54805A13772DE /* libRNOverlay.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNOverlay.a; sourceTree = "<group>"; };
 		80DDB0F936C44CB381A8F2C6 /* RNOverlay.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNOverlay.xcodeproj; path = "../node_modules/react-native-overlay/RNOverlay.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8D65DCDD215345868E301531 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		9DD742E07158FFFDB625B473 /* libPods-AgileCardsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AgileCardsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3AFFBEDAB76DFEAEDA1462 /* Pods-AgileCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AgileCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-AgileCards/Pods-AgileCards.release.xcconfig"; sourceTree = "<group>"; };
 		ADCED415AC484AED85F8E21F /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		B2BB2490E02F84DF522DD5AD /* Pods-AgileCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AgileCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AgileCards/Pods-AgileCards.debug.xcconfig"; sourceTree = "<group>"; };
-		B6E5BD6FFD440C2FBB815ABE /* Pods-AgileCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AgileCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-AgileCards/Pods-AgileCards.release.xcconfig"; sourceTree = "<group>"; };
 		B826A03D1BA84BCBA06E1F7A /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		C74F56E5AEFA451A96EB828C /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		D0255E12327F4C3B9F967DCC /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -203,10 +202,10 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				78346731645F49F076C8BBD8 /* libPods-AgileCards.a in Frameworks */,
 				A20B816DD0674433A5911BAC /* libRNVectorIcons.a in Frameworks */,
 				F413400A7C754FFE8B95B727 /* libRNOverlay.a in Frameworks */,
 				A73F135564704C2AA0C87A87 /* libRNTableView.a in Frameworks */,
+				9AF43C4F564E4F74BCCE9CD4 /* libPods-AgileCards.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,15 +286,6 @@
 			path = AgileCardsUITests;
 			sourceTree = "<group>";
 		};
-		09205D62D5762D7812E147A5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B2BB2490E02F84DF522DD5AD /* Pods-AgileCards.debug.xcconfig */,
-				B6E5BD6FFD440C2FBB815ABE /* Pods-AgileCards.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +324,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1E6DA2E34F2DCE0DFCDB0F47 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				128D2E339E6B9F0886AC581B /* Pods-AgileCards.debug.xcconfig */,
+				AC3AFFBEDAB76DFEAEDA1462 /* Pods-AgileCards.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		35928E038F424BC1885201D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,15 +346,6 @@
 				D8EBDBF901E941B2B79179CF /* Zocial.ttf */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		5544764321E1E89C236C6C3A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7E5959207B1DEC9FC7C18F33 /* libPods-AgileCards.a */,
-				9DD742E07158FFFDB625B473 /* libPods-AgileCardsTests.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
@@ -401,9 +391,9 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				038D7D141CFC7CA400876AE3 /* AgileCardsUITests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
-				09205D62D5762D7812E147A5 /* Pods */,
-				5544764321E1E89C236C6C3A /* Frameworks */,
 				35928E038F424BC1885201D4 /* Resources */,
+				1E6DA2E34F2DCE0DFCDB0F47 /* Pods */,
+				A716DFC3B28B7C01135F63D3 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -416,6 +406,14 @@
 				038D7D131CFC7CA300876AE3 /* AgileCardsUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A716DFC3B28B7C01135F63D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75D0EDC047A14969427FB1A1 /* libPods-AgileCards.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,13 +441,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AgileCards" */;
 			buildPhases = (
-				54D91891294DAFBA8BC36ABD /* 📦 Check Pods Manifest.lock */,
+				4C79E61A1F10887137F3F0D7 /* 📦 Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				51CEF99389E7D2D4814BDCEA /* 📦 Embed Pods Frameworks */,
-				D443CAC5EF2CED275DE52A03 /* 📦 Copy Pods Resources */,
+				CACF3E9EF8497034D1E34B0B /* 📦 Embed Pods Frameworks */,
+				8132F7F7BFD93E357F12E3C3 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -688,22 +686,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
 		};
-		51CEF99389E7D2D4814BDCEA /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AgileCards/Pods-AgileCards-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		54D91891294DAFBA8BC36ABD /* 📦 Check Pods Manifest.lock */ = {
+		4C79E61A1F10887137F3F0D7 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -718,7 +701,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		D443CAC5EF2CED275DE52A03 /* 📦 Copy Pods Resources */ = {
+		8132F7F7BFD93E357F12E3C3 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -731,6 +714,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AgileCards/Pods-AgileCards-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CACF3E9EF8497034D1E34B0B /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AgileCards/Pods-AgileCards-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -824,7 +822,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2BB2490E02F84DF522DD5AD /* Pods-AgileCards.debug.xcconfig */;
+			baseConfigurationReference = 128D2E339E6B9F0886AC581B /* Pods-AgileCards.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -838,7 +836,7 @@
 					"$(SRCROOT)/../node_modules/react-native-tableview/RNTableView",
 				);
 				INFOPLIST_FILE = AgileCards/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -852,7 +850,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6E5BD6FFD440C2FBB815ABE /* Pods-AgileCards.release.xcconfig */;
+			baseConfigurationReference = AC3AFFBEDAB76DFEAEDA1462 /* Pods-AgileCards.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -865,7 +863,7 @@
 					"$(SRCROOT)/../node_modules/react-native-tableview/RNTableView",
 				);
 				INFOPLIST_FILE = AgileCards/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -979,7 +977,7 @@
 				038D7D1C1CFC7CA400876AE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AgileCards" */ = {
 			isa = XCConfigurationList;
@@ -988,7 +986,7 @@
 				13B07F951A680F5B00A75B9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "AgileCards" */ = {
 			isa = XCConfigurationList;
@@ -997,7 +995,7 @@
 				83CBBA211A601CBA00E9B192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

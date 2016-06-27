@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 
 const { height: windowHeight, width: windowWidth } = Dimensions.get('window');
 
-const settingsHeight = 311;
+const settingsHeight = 421;
 const popupOffset = 10
 const popupDisplayArea = {
   x: popupOffset,
@@ -63,8 +63,8 @@ export default class Nav extends Component {
   render() {
     return (
       <View style={styles.root}>
-        <TouchableOpacity style={styles.settingsButton} ref="button" onPress={this.showPopover}>
-          <View >
+        <TouchableOpacity style={styles.settingsButton} ref="button" onPress={this.showPopover} testID="settings-button">
+          <View>
             <Icon name="widget" size={28} color="rgba(0, 0, 0, .25)"/>
           </View>
         </TouchableOpacity>

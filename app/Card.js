@@ -20,10 +20,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Card({ children, color }) {
+export default function Card({ children, colors }) {
+
   return (
-    <View style={[styles.slide, {backgroundColor: color}]}>
-      <Text style={styles.text}>{children}</Text>
+    <View style={[styles.slide, { backgroundColor: colors.bg }]}>
+      <Text style={[styles.text]}>{children}</Text>
     </View>
   );
 }

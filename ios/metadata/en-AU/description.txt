@@ -1,3 +1,5 @@
-Agile Cards is a quick and easy tool to help estimate tasks together as a group.
+Agile Cards is a quick and easy tool to help estimate tasks together as a group. This app lets you build consensus amoung your team using the fibonacci sequence agile cards with an easy-to-use UI.
 
-This app lets you build consensus amoung your team using the fibonacci sequence agile cards with a pleasing color scheme and easy-to-use UI.
+ • Multiple number schemes: Planning Poker, Fibonacci and T-Shirt Sizing
+ • Configurable number range. Set largest card to only 8 if that's how you plan
+ • Four pleasing color schemes: Blue, Purple, Red, Green

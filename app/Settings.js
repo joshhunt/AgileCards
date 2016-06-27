@@ -16,6 +16,9 @@ var Cell = TableView.Cell;
 import {
   MAX_CARD_OPTIONS,
   SEQUENCE_OPTIONS,
+  COLOR_OPTIONS,
+  COLORS,
+  TINT_FOR_COLOR,
 } from './settingsValues';
 
 const styles = StyleSheet.create({
@@ -48,12 +51,14 @@ export default class Settings extends Component {
     super(props);
     this.state = props.settings;
     this.state.maxCardChoices = MAX_CARD_OPTIONS[this.state.cardSequence];
+    this.state.colorOptionsTint = TINT_FOR_COLOR[this.state.color];
   }
 
   notifyNewSettings = () => {
     this.props.onChange({
       cardSequence: this.state.cardSequence,
       maxCard: this.state.maxCard,
+      color: this.state.color,
     })
   }
 
@@ -62,6 +67,10 @@ export default class Settings extends Component {
 
     if (newSettings.cardSequence) {
       newState.maxCardChoices = MAX_CARD_OPTIONS[newSettings.cardSequence];
+    }
+
+    if (newSettings.color) {
+      newState.colorOptionsTint = TINT_FOR_COLOR[newSettings.color];
     }
 
     this.setState(newState, this.notifyNewSettings);
@@ -82,6 +91,12 @@ export default class Settings extends Component {
     });
   }
 
+  onColorChange = (ev) => {
+    this.setSettings({
+      color: COLOR_OPTIONS[ev.nativeEvent.selectedSegmentIndex],
+    });
+  }
+
   render() {
 
     const tableViewProps = {
@@ -93,7 +108,7 @@ export default class Settings extends Component {
       onPress: this.onTableViewPress,
     };
 
-    const { cardSequence, maxCardChoices } = this.state;
+    const { cardSequence, maxCardChoices, colorOptionsTint } = this.state;
 
     return (
       <TableView {...tableViewProps}>
@@ -106,12 +121,23 @@ export default class Settings extends Component {
           ))}
         </Section>
 
-        <Section label="Largest Card">
+        <Section label="Largest card">
           <Cell style={styles.cell}>
             <SegmentedControlIOS
               values={maxCardChoices}
               selectedIndex={maxCardChoices.indexOf(this.props.settings.maxCard)}
               onChange={this.onMaxCardChange}
+            />
+          </Cell>
+        </Section>
+
+        <Section label="Color scheme">
+          <Cell style={styles.cell}>
+            <SegmentedControlIOS
+              tintColor={colorOptionsTint}
+              values={COLOR_OPTIONS}
+              selectedIndex={COLOR_OPTIONS.indexOf(this.props.settings.color)}
+              onChange={this.onColorChange}
             />
           </Cell>
         </Section>

@@ -1,0 +1,5 @@
+Colors! Select from 4 vibrant color schemes to brighten up your planning sessions!
+
+Also fixed a bug that prevented preferences from being saved.
+
+More features are coming soon. Have feature requests of your own? Email them through to hi@joshhunt.is
