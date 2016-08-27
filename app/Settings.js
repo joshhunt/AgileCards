@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  SegmentedControlIOS,
+  ScrollView,
   Switch,
 } from 'react-native';
 
+import { SegmentedControls } from 'react-native-radio-buttons';
+
 import {
-  Cell,
-  Section,
   TableView,
+  Section,
+  CustomCell,
+  Cell,
 } from 'react-native-tableview-simple';
 
 import {
@@ -19,27 +22,15 @@ import {
   TINT_FOR_COLOR,
 } from './settingsValues';
 
+const segmentedControlsProps = {
+  containerStyle: { flex: 1, height: 28 },
+  optionContainerStyle: { flex: 1, paddingBottom: 5, height: 28 },
+};
+
 const styles = StyleSheet.create({
-  table: {
-    flex: 1,
-  },
-
-  cell: {
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingBottom: 12,
-    paddingTop: 12,
-  },
-
   cellText: {
     flex: 1,
     fontSize: 17,
-  },
-
-  splitCell: {
-    flexWrap: 'nowrap',
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 });
 
@@ -52,25 +43,19 @@ export default class Settings extends Component {
     this.state.colorOptionsTint = TINT_FOR_COLOR[this.state.color];
   }
 
-  onTableViewPress = (ev) => {
-    if (ev.selectedSection === 0) {
-      this.setSettings({
-        cardSequence: ev.value,
-        maxCard: undefined,
-      });
-    }
-  }
-
-  onMaxCardChange = (ev) => {
+  onCardSequenceChange = (selected) => {
     this.setSettings({
-      maxCard: this.state.maxCardChoices[ev.nativeEvent.selectedSegmentIndex],
+      cardSequence: selected,
+      maxCard: undefined,
     });
   }
 
-  onColorChange = (ev) => {
-    this.setSettings({
-      color: COLOR_OPTIONS[ev.nativeEvent.selectedSegmentIndex],
-    });
+  onMaxCardChange = (value) => {
+    this.setSettings({ maxCard: value });
+  }
+
+  onColorChange = (value) => {
+    this.setSettings({ color: value });
   }
 
   onDisplayEmojiChange = (value) => {
@@ -108,47 +93,56 @@ export default class Settings extends Component {
     const { cardSequence, maxCardChoices, colorOptionsTint, displayEmoji } = this.state;
 
     return (
-      <TableView>
+      <ScrollView>
+        <TableView>
 
-        <Section header="Cards">
-          {SEQUENCE_OPTIONS.map(choice => (
-            <Cell style={styles.cell} value={choice.value} key={choice.value} selected={cardSequence === choice.value}>
-              <Text style={styles.cellText}>{choice.label}</Text>
-            </Cell>
-          ))}
-        </Section>
+          <Section header="CARDS" sectionTintColor="white">
+            {SEQUENCE_OPTIONS.map(choice => (
+              <Cell
+                value={choice.value}
+                key={choice.value}
+                selected={cardSequence === choice.value}
+                accessory={cardSequence === choice.value ? 'Checkmark' : null}
+                onPress={this.onCardSequenceChange.bind(null, choice.value)}
+                title={choice.label}
+              />
+            ))}
+          </Section>
 
-        <Section header="Largest card">
-          <Cell style={styles.cell}>
-            <SegmentedControlIOS
-              values={maxCardChoices}
-              selectedIndex={maxCardChoices.indexOf(this.props.settings.maxCard)}
-              onChange={this.onMaxCardChange}
-            />
-          </Cell>
-        </Section>
+          <Section header="LARGEST CARD" sectionTintColor="white">
+            <CustomCell>
+              <SegmentedControls
+                {...segmentedControlsProps}
+                options={maxCardChoices}
+                selectedOption={this.props.settings.maxCard}
+                onSelection={this.onMaxCardChange}
+              />
+            </CustomCell>
+          </Section>
 
-        <Section header="Color scheme">
-          <Cell style={styles.cell}>
-            <SegmentedControlIOS
-              tintColor={colorOptionsTint}
-              values={COLOR_OPTIONS}
-              selectedIndex={COLOR_OPTIONS.indexOf(this.props.settings.color)}
-              onChange={this.onColorChange}
-            />
-          </Cell>
-        </Section>
+          <Section header="COLOR SCHEME" sectionTintColor="white">
+            <CustomCell>
+              <SegmentedControls
+                {...segmentedControlsProps}
+                tint={colorOptionsTint}
+                options={COLOR_OPTIONS}
+                selectedOption={this.props.settings.color}
+                onSelection={this.onColorChange}
+              />
+            </CustomCell>
+          </Section>
 
-        <Section header="Extras">
-          <Cell style={[styles.cell, styles.splitCell]}>
-            <Text style={styles.cellText}>Last card emoji</Text>
-            <Switch
-              value={displayEmoji}
-              onValueChange={this.onDisplayEmojiChange}
-            />
-          </Cell>
-        </Section>
-      </TableView>
+          <Section header="EXTRAS" sectionTintColor="white">
+            <CustomCell>
+              <Text style={styles.cellText}>Last card emoji</Text>
+              <Switch
+                value={displayEmoji}
+                onValueChange={this.onDisplayEmojiChange}
+              />
+            </CustomCell>
+          </Section>
+        </TableView>
+      </ScrollView>
     );
   }
 }

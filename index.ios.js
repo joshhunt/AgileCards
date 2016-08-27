@@ -28,6 +28,8 @@ class AgileCards extends Component {
       },
     };
 
+    // AsyncStorage.setItem('settings', JSON.stringify(this.state.settings));
+
     AsyncStorage.getItem('settings')
       .then((settings) => {
         if (!settings) return;

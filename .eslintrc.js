@@ -12,6 +12,7 @@ module.exports = {
         "react/prop-types": "off",
         "no-prototype-builtins": "off",
         "react/jsx-filename-extension": "off",
+        "react/jsx-no-bind": "off",
         "max-len": "off",
         "no-return-assign": "off",
     }
