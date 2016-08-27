@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import {
   StyleSheet,
   View,
   Text,
-} from 'react-native'
+} from 'react-native';
 
 const styles = StyleSheet.create({
   slide: {
@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
 });
 
 export default function Card({ children, colors }) {
-
   return (
     <View style={[styles.slide, { backgroundColor: colors.bg }]}>
       <Text style={[styles.text]}>{children}</Text>

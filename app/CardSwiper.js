@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import {
   StyleSheet,
@@ -9,9 +9,9 @@ import Swiper from 'react-native-swiper';
 import Card from './Card';
 import { CARDS_FOR_SEQUENCE, COLORS } from './settingsValues';
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   dot: {
-    backgroundColor:'rgba(0,0,0,.2)',
+    backgroundColor: 'rgba(0,0,0,.2)',
     width: 8,
     height: 8,
     borderRadius: 4,
@@ -22,7 +22,7 @@ var styles = StyleSheet.create({
   },
 
   dotActive: {
-    backgroundColor:'rgba(255,255,255,.7)',
+    backgroundColor: 'rgba(255,255,255,.7)',
   },
 });
 
@@ -35,7 +35,7 @@ var styles = StyleSheet.create({
 //   { content: "💩", color: '#16405B' },
 // ];
 
-function cardsForSettings({cardSequence,  maxCard}) {
+function cardsForSettings({ cardSequence, maxCard }) {
   let maxReached = false;
   const cards = CARDS_FOR_SEQUENCE[cardSequence]
     .filter((oneCardValue) => {
@@ -62,9 +62,7 @@ export default function CardSwiper({ settings }) {
 
   return (
     <Swiper {...swiperProps} testID="swiper">
-      {allCards.map((cardData, index) => {
-        return <Card key={cardData} colors={colors[index]}>{cardData}</Card>
-      })}
+      {allCards.map((cardData, index) => <Card key={cardData} colors={colors[index]}>{cardData}</Card>)}
     </Swiper>
   );
 }

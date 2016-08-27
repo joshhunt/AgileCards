@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 const { height: windowHeight, width: windowWidth } = Dimensions.get('window');
 
 const settingsHeight = 421;
-const popupOffset = 10
+const popupOffset = 10;
 const popupDisplayArea = {
   x: popupOffset,
   y: popupOffset,
@@ -46,26 +46,26 @@ export default class Nav extends Component {
   };
 
   showPopover = () => {
-    this.refs.button.measure((ox, oy, width, height, px, py) => {
+    this.button.measure((ox, oy, width, height, px, py) => {
       const newState = {
         isVisible: true,
-        buttonRect: {x: px, y: py, width: width, height: height},
-        popupHeight: Math.min(popupDisplayArea.height - (py + height) - 8, settingsHeight)
+        buttonRect: { x: px, y: py, width, height },
+        popupHeight: Math.min(popupDisplayArea.height - (py + height) - 8, settingsHeight),
       };
       this.setState(newState);
     });
   };
 
-  closePopover = (ev) => {
-    this.setState({isVisible: false});
+  closePopover = () => {
+    this.setState({ isVisible: false });
   };
 
   render() {
     return (
       <View style={styles.root}>
-        <TouchableOpacity style={styles.settingsButton} ref="button" onPress={this.showPopover} testID="settings-button">
+        <TouchableOpacity style={styles.settingsButton} ref={c => this.button = c} onPress={this.showPopover} testID="settings-button">
           <View>
-            <Icon name="widget" size={28} color="rgba(0, 0, 0, .25)"/>
+            <Icon name="widget" size={28} color="rgba(0, 0, 0, .25)" />
           </View>
         </TouchableOpacity>
 
@@ -74,9 +74,10 @@ export default class Nav extends Component {
           isVisible={this.state.isVisible}
           fromRect={this.state.buttonRect}
           placement="bottom"
-          onClose={this.closePopover}>
+          onClose={this.closePopover}
+        >
 
-          <View style={{height: this.state.popupHeight, width: windowWidth * .75 }}>
+          <View style={{ height: this.state.popupHeight, width: windowWidth * 0.75 }}>
             <Settings settings={this.props.settings} onChange={this.props.onSettingsChange} />
           </View>
 

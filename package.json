@@ -3,17 +3,27 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "lint": "eslint ./app"
   },
   "dependencies": {
+    "eslint": "^3.4.0",
     "pleasejs": "^0.4.2",
     "pusher-js": "^3.2.1",
     "react": "15.3.0",
     "react-native": "^0.32.0",
-    "react-native-overlay": "git+https://github.com/aerofs/react-native-overlay.git",
-    "react-native-swiper": "git://github.com/leecade/react-native-swiper.git",
-    "react-native-tableview": "^1.5.2",
+    "react-native-swiper": "^1.4.11",
+    "react-native-tableview-simple": "^0.12.0",
     "react-native-vector-icons": "^2.0.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.0",
+    "eslint-plugin-react": "^6.1.2"
+  }
 }

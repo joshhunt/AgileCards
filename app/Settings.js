@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-
 import {
   StyleSheet,
   Text,
-  View,
   SegmentedControlIOS,
   Switch,
 } from 'react-native';
 
-var TableView = require('react-native-tableview');
-var Section = TableView.Section;
-var Item = TableView.Item;
-var Cell = TableView.Cell;
+import {
+  Cell,
+  Section,
+  TableView,
+} from 'react-native-tableview-simple';
 
 import {
   MAX_CARD_OPTIONS,
   SEQUENCE_OPTIONS,
   COLOR_OPTIONS,
-  COLORS,
   TINT_FOR_COLOR,
 } from './settingsValues';
 
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
     flexWrap: 'nowrap',
     flexDirection: 'row',
     alignItems: 'center',
-  }
+  },
 });
 
 export default class Settings extends Component {
@@ -50,37 +48,8 @@ export default class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = props.settings;
-    console.log('settings constructor', this.state);
     this.state.maxCardChoices = MAX_CARD_OPTIONS[this.state.cardSequence];
     this.state.colorOptionsTint = TINT_FOR_COLOR[this.state.color];
-  }
-
-  notifyNewSettings = () => {
-    this.props.onChange({
-      cardSequence: this.state.cardSequence,
-      maxCard: this.state.maxCard,
-      color: this.state.color,
-      displayEmoji: this.state.displayEmoji,
-    })
-  }
-
-  setSettings = (newSettings) => {
-    const newState = { ...newSettings };
-
-    if (newSettings.cardSequence) {
-      newState.maxCardChoices = MAX_CARD_OPTIONS[newSettings.cardSequence];
-    }
-
-    if (newSettings.color) {
-      newState.colorOptionsTint = TINT_FOR_COLOR[newSettings.color];
-    }
-
-    if (newSettings.hasOwnProperty('displayEmoji')) {
-      newState.displayEmoji = newSettings.displayEmoji;
-      console.log('changing emoji setting to', newState.displayEmoji);
-    }
-
-    this.setState(newState, this.notifyNewSettings);
   }
 
   onTableViewPress = (ev) => {
@@ -105,12 +74,37 @@ export default class Settings extends Component {
   }
 
   onDisplayEmojiChange = (value) => {
-    console.log('onDisplayEmojiChange', value);
     this.setSettings({ displayEmoji: value });
   }
 
-  render() {
+  setSettings = (newSettings) => {
+    const newState = { ...newSettings };
 
+    if (newSettings.cardSequence) {
+      newState.maxCardChoices = MAX_CARD_OPTIONS[newSettings.cardSequence];
+    }
+
+    if (newSettings.color) {
+      newState.colorOptionsTint = TINT_FOR_COLOR[newSettings.color];
+    }
+
+    if (newSettings.hasOwnProperty('displayEmoji')) {
+      newState.displayEmoji = newSettings.displayEmoji;
+    }
+
+    this.setState(newState, this.notifyNewSettings);
+  }
+
+  notifyNewSettings = () => {
+    this.props.onChange({
+      cardSequence: this.state.cardSequence,
+      maxCard: this.state.maxCard,
+      color: this.state.color,
+      displayEmoji: this.state.displayEmoji,
+    });
+  }
+
+  render() {
     const tableViewProps = {
       style: styles.table,
       allowsToggle: true,

@@ -15,8 +15,6 @@ import { FIBONACCI, COLOR_BLUE } from './app/settingsValues';
 
 console.disableYellowBox = true;
 
-var Overlay = require('react-native-overlay');
-
 const styles = StyleSheet.create({
   root: {
     flex: 1,
