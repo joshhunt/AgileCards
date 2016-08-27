@@ -34,6 +34,7 @@ class AgileCards extends Component {
         cardSequence: FIBONACCI,
         maxCard: '13',
         color: COLOR_BLUE,
+        displayEmoji: true,
       },
     }
 

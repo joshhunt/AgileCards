@@ -50,6 +50,7 @@ export default class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = props.settings;
+    console.log('settings constructor', this.state);
     this.state.maxCardChoices = MAX_CARD_OPTIONS[this.state.cardSequence];
     this.state.colorOptionsTint = TINT_FOR_COLOR[this.state.color];
   }
@@ -59,6 +60,7 @@ export default class Settings extends Component {
       cardSequence: this.state.cardSequence,
       maxCard: this.state.maxCard,
       color: this.state.color,
+      displayEmoji: this.state.displayEmoji,
     })
   }
 
@@ -71,6 +73,11 @@ export default class Settings extends Component {
 
     if (newSettings.color) {
       newState.colorOptionsTint = TINT_FOR_COLOR[newSettings.color];
+    }
+
+    if (newSettings.hasOwnProperty('displayEmoji')) {
+      newState.displayEmoji = newSettings.displayEmoji;
+      console.log('changing emoji setting to', newState.displayEmoji);
     }
 
     this.setState(newState, this.notifyNewSettings);
@@ -97,6 +104,11 @@ export default class Settings extends Component {
     });
   }
 
+  onDisplayEmojiChange = (value) => {
+    console.log('onDisplayEmojiChange', value);
+    this.setSettings({ displayEmoji: value });
+  }
+
   render() {
 
     const tableViewProps = {
@@ -108,7 +120,7 @@ export default class Settings extends Component {
       onPress: this.onTableViewPress,
     };
 
-    const { cardSequence, maxCardChoices, colorOptionsTint } = this.state;
+    const { cardSequence, maxCardChoices, colorOptionsTint, displayEmoji } = this.state;
 
     return (
       <TableView {...tableViewProps}>
@@ -142,12 +154,15 @@ export default class Settings extends Component {
           </Cell>
         </Section>
 
-        {/*<Section label="Extras">
+        <Section label="Extras">
           <Cell style={[styles.cell, styles.splitCell]}>
             <Text style={styles.cellText}>Last card emoji</Text>
-            <Switch />
+            <Switch
+              value={displayEmoji}
+              onValueChange={this.onDisplayEmojiChange}
+            />
           </Cell>
-        </Section> */}
+        </Section>
       </TableView>
     );
   }
