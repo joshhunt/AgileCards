@@ -8,6 +8,7 @@ import {
 
 import CardSwiper from './app/CardSwiper';
 import Nav from './app/Nav';
+import EmojiPicker from './app/EmojiPicker';
 
 import { FIBONACCI, COLOR_BLUE } from './app/settingsValues';
 
@@ -25,6 +26,7 @@ class AgileCards extends Component {
         maxCard: '13',
         color: COLOR_BLUE,
         displayEmoji: true,
+        emoji: '1f61d',
       },
     };
 
@@ -52,10 +54,21 @@ class AgileCards extends Component {
     });
   }
 
+  openEmojiPicker = () => {
+    this.setState({ displayEmojiPicker: true });
+  }
+
+  onEmojiSelect = (newEmoji) => {
+    console.log('selected emoji', newEmoji);
+    this.onSettingsChange({ ...this.state.settings, emoji: newEmoji });
+    this.setState({ displayEmojiPicker: false });
+  }
+
   render() {
     return (
       <View testID="root-view">
-        { this.state.loaded && <CardSwiper settings={this.state.settings} /> }
+        { this.state.displayEmojiPicker && <EmojiPicker onSelect={this.onEmojiSelect} /> }
+        { this.state.loaded && <CardSwiper openEmojiPicker={this.openEmojiPicker} settings={this.state.settings} /> }
         <Nav settings={this.state.settings} onSettingsChange={this.onSettingsChange} />
       </View>
     );

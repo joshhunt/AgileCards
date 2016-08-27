@@ -5,8 +5,10 @@ import {
   View,
 } from 'react-native';
 
+
 import Swiper from 'react-native-swiper';
 import Card from './Card';
+import EmojiCard from './EmojiCard';
 import { CARDS_FOR_SEQUENCE, COLORS } from './settingsValues';
 
 const styles = StyleSheet.create({
@@ -24,6 +26,15 @@ const styles = StyleSheet.create({
   dotActive: {
     backgroundColor: 'rgba(255,255,255,.7)',
   },
+
+  emoji: {
+    flex: 1,
+    paddingTop: 150,
+    paddingBottom: 150,
+    paddingLeft: 50,
+    paddingRight: 50,
+    backgroundColor: 'white',
+  },
 });
 
 // const CARDS = [
@@ -37,6 +48,7 @@ const styles = StyleSheet.create({
 
 function cardsForSettings({ cardSequence, maxCard }) {
   let maxReached = false;
+
   const cards = CARDS_FOR_SEQUENCE[cardSequence]
     .filter((oneCardValue) => {
       if (oneCardValue === maxCard) {
@@ -50,7 +62,7 @@ function cardsForSettings({ cardSequence, maxCard }) {
   return cards;
 }
 
-export default function CardSwiper({ settings }) {
+export default function CardSwiper({ settings, openEmojiPicker }) {
   const swiperProps = {
     showButtons: false,
     dot: <View style={styles.dot} />,
@@ -62,7 +74,13 @@ export default function CardSwiper({ settings }) {
 
   return (
     <Swiper {...swiperProps} testID="swiper">
-      {allCards.map((cardData, index) => <Card key={cardData} colors={colors[index]}>{cardData}</Card>)}
+      {allCards.map((cardData, index) => {
+        if (cardData === 'emoji-picker') {
+          return <EmojiCard key="emoji-picker" settings={settings} colors={colors[index]} openEmojiPicker={openEmojiPicker} />;
+        }
+
+        return <Card key={cardData} colors={colors[index]}>{cardData}</Card>;
+      })}
     </Swiper>
   );
 }

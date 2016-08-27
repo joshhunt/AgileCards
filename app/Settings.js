@@ -109,7 +109,7 @@ export default class Settings extends Component {
             ))}
           </Section>
 
-          <Section header="LARGEST CARD" sectionTintColor="white">
+          { maxCardChoices && <Section header="LARGEST CARD" sectionTintColor="white">
             <CustomCell>
               <SegmentedControls
                 {...segmentedControlsProps}
@@ -118,7 +118,7 @@ export default class Settings extends Component {
                 onSelection={this.onMaxCardChange}
               />
             </CustomCell>
-          </Section>
+          </Section> }
 
           <Section header="COLOR SCHEME" sectionTintColor="white">
             <CustomCell>
