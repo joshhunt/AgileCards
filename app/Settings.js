@@ -105,21 +105,12 @@ export default class Settings extends Component {
   }
 
   render() {
-    const tableViewProps = {
-      style: styles.table,
-      allowsToggle: true,
-      allowsMultipleSelection: false,
-      tableViewStyle: TableView.Consts.Style.Grouped,
-      tableViewCellStyle: TableView.Consts.CellStyle.Value1,
-      onPress: this.onTableViewPress,
-    };
-
     const { cardSequence, maxCardChoices, colorOptionsTint, displayEmoji } = this.state;
 
     return (
-      <TableView {...tableViewProps}>
+      <TableView>
 
-        <Section label="Cards">
+        <Section header="Cards">
           {SEQUENCE_OPTIONS.map(choice => (
             <Cell style={styles.cell} value={choice.value} key={choice.value} selected={cardSequence === choice.value}>
               <Text style={styles.cellText}>{choice.label}</Text>
@@ -127,7 +118,7 @@ export default class Settings extends Component {
           ))}
         </Section>
 
-        <Section label="Largest card">
+        <Section header="Largest card">
           <Cell style={styles.cell}>
             <SegmentedControlIOS
               values={maxCardChoices}
@@ -137,7 +128,7 @@ export default class Settings extends Component {
           </Cell>
         </Section>
 
-        <Section label="Color scheme">
+        <Section header="Color scheme">
           <Cell style={styles.cell}>
             <SegmentedControlIOS
               tintColor={colorOptionsTint}
@@ -148,7 +139,7 @@ export default class Settings extends Component {
           </Cell>
         </Section>
 
-        <Section label="Extras">
+        <Section header="Extras">
           <Cell style={[styles.cell, styles.splitCell]}>
             <Text style={styles.cellText}>Last card emoji</Text>
             <Switch
