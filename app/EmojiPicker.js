@@ -3,31 +3,46 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Image,
-  ScrollView,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 
-import emojisListRaw from './emojis';
+import {
+    LazyloadScrollView,
+    LazyloadView,
+    LazyloadImage,
+} from 'react-native-lazyload';
+
 import emojisJson from 'emojione/emoji.json';
 import _ from 'lodash';
 
-const emojisList = _.filter(emojisJson, ({ category }) => category === 'people').slice(0, 50);
+const offsetHeight = 60;
+const offsetWidth = 30;
+const { height: windowHeight, width: windowWidth } = Dimensions.get('window');
+
+const emojisList = _.filter(emojisJson, ({ category }) => category === 'people');
 
 
 const styles = StyleSheet.create({
   pickerEmoji: {},
 
   overlay: {
-    position: 'absolute',
-    top: 100,
-    left: 50,
-    width: 300,
-    height: 500,
-    backgroundColor: 'white',
-    zIndex: 1,
-    flexWrap: 'wrap',
-    flexDirection: 'row',
+    flex: 1,
+    margin: 20,
+    // position: 'absolute',
+    // top: offsetHeight,
+    // left: offsetWidth,
+    // width: windowWidth - (offsetWidth * 2),
+    // height: windowHeight - (offsetHeight * 2),
+    // backgroundColor: 'white',
+    // zIndex: 1,
+    // flexWrap: 'wrap',
+    // flexDirection: 'row',
+    // borderRadius: 10,
+    // shadowColor: 'black',
+    // shadowOffset: { width: 0, height: 2 },
+    // shadowRadius: 2,
+    // shadowOpacity: 0.5,
   },
 
   scroll: {
@@ -40,6 +55,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+
   item: {
     margin: 10,
     width: 50,
@@ -48,7 +64,7 @@ const styles = StyleSheet.create({
 });
 
 const emojiUrl = (unicode) => (
-  `https://github.com/Ranks/emojione/blob/master/assets/png_512x512/${unicode}.png?raw=true`
+  `https://s3-ap-southeast-2.amazonaws.com/agilecards/emoji_512/${unicode}.png`
 );
 
 export default class EmojiCard extends React.Component {
@@ -63,22 +79,23 @@ export default class EmojiCard extends React.Component {
   render() {
     return (
       <View style={styles.overlay}>
-        <ScrollView style={[styles.scroll]} contentContainerStyle={styles.list}>
+        <LazyloadScrollView name="emoji-picker" style={[styles.scroll]} contentContainerStyle={styles.list}>
           {emojisList.map((emo) => {
             return (
-              <View style={styles.item} key={emo.unicode}>
+              <LazyloadView host="emoji-picker" style={styles.item} key={emo.unicode}>
                 <TouchableOpacity onPress={this.props.onSelect.bind(null, emo.unicode)} >
-                  <Image
+                  <LazyloadImage
+                    host="emoji-picker"
                     style={styles.pickerEmoji}
                     source={{ uri: emojiUrl(emo.unicode) }}
                     width={50}
                     height={50}
                   />
                 </TouchableOpacity>
-              </View>
+              </LazyloadView>
             );
           })}
-        </ScrollView>
+        </LazyloadScrollView>
       </View>
     );
   }

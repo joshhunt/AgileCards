@@ -7,9 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const emojiUrl = (unicode) => (
-  `https://github.com/Ranks/emojione/blob/master/assets/png_512x512/${unicode}.png?raw=true`
-);
+// import Emoji from './Emoji';
 
 const styles = StyleSheet.create({
   slide: {
@@ -44,6 +42,10 @@ const styles = StyleSheet.create({
   },
 });
 
+const emojiUrl = (unicode) => (
+  `https://s3-ap-southeast-2.amazonaws.com/agilecards/emoji_512/${unicode}.png`
+);
+
 export default class EmojiCard extends React.Component {
   state = {
     pickerOpen: false,
@@ -57,11 +59,15 @@ export default class EmojiCard extends React.Component {
     return (
       <View style={[styles.slide, { backgroundColor: this.props.colors.bg }]}>
         <TouchableOpacity onPress={this.props.openEmojiPicker}>
-          <Image
-            style={styles.emoji}
-            source={{ url: emojiUrl(this.props.settings.emoji) }}
-            width={250} height={250}
-          />
+          <View style={styles.emojiMask} >
+            {/*<Emoji size={250} name={'point_left_tone2'} />*/}
+            <Image
+              style={styles.pickerEmoji}
+              source={{ uri: emojiUrl(this.props.settings.emoji) }}
+              width={200}
+              height={200}
+            />
+          </View>
         </TouchableOpacity>
       </View>
     );

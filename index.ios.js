@@ -6,6 +6,8 @@ import {
   AsyncStorage,
 } from 'react-native';
 
+import Modal from 'react-native-modalbox';
+
 import CardSwiper from './app/CardSwiper';
 import Nav from './app/Nav';
 import EmojiPicker from './app/EmojiPicker';
@@ -65,11 +67,14 @@ class AgileCards extends Component {
   }
 
   render() {
+    console.log('displayEmojiPicker:', this.state.displayEmojiPicker);
     return (
       <View testID="root-view">
-        { this.state.displayEmojiPicker && <EmojiPicker onSelect={this.onEmojiSelect} /> }
         { this.state.loaded && <CardSwiper openEmojiPicker={this.openEmojiPicker} settings={this.state.settings} /> }
         <Nav settings={this.state.settings} onSettingsChange={this.onSettingsChange} />
+        <Modal isOpen={this.state.displayEmojiPicker}>
+          { this.state.displayEmojiPicker && <EmojiPicker onSelect={this.onEmojiSelect} /> }
+        </Modal>
       </View>
     );
   }
