@@ -32,6 +32,10 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 17,
   },
+
+  disabledText: {
+    opacity: 0.6,
+  },
 });
 
 export default class Settings extends Component {
@@ -92,6 +96,7 @@ export default class Settings extends Component {
 
   render() {
     const { cardSequence, maxCardChoices, colorOptionsTint, displayEmoji } = this.state;
+    const hasPurchasedPro = this.props.iap.pro;
 
     return (
       <ScrollView>
@@ -133,10 +138,15 @@ export default class Settings extends Component {
             </CustomCell>
           </Section>
 
-          <Section header="EXTRAS" sectionTintColor="white">
+          <Section
+            header="EXTRAS"
+            sectionTintColor="white"
+            footer={hasPurchasedPro ? 'Thanks for your support!' : 'Purchase pro to unlock'}
+          >
             <CustomCell>
-              <Text style={styles.cellText}>Last card emoji</Text>
+              <Text style={[styles.cellText, !hasPurchasedPro && styles.disabledText]}>Last card emoji</Text>
               <Switch
+                disabled={!hasPurchasedPro}
                 value={displayEmoji}
                 onValueChange={this.onDisplayEmojiChange}
               />

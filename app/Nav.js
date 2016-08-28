@@ -19,11 +19,18 @@ const styles = StyleSheet.create({
     right: 0,
     paddingTop: 30,
     paddingRight: 20,
+    paddingLeft: 20,
     backgroundColor: 'transparent',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+
+  proButton: {
+    // alignSelf: 'flex-start',
   },
 
   settingsButton: {
-    alignSelf: 'flex-end',
+    // alignSelf: 'flex-end',
   },
 });
 
@@ -63,9 +70,27 @@ export default class Nav extends Component {
   render() {
     return (
       <View style={styles.root}>
+        { !this.props.iap.pro &&
+          <TouchableOpacity style={styles.proButton} ref={c => this.button = c} onPress={this.props.showPlus} testID="pro-button">
+            <View>
+              <Icon
+                name="star"
+                size={28}
+                color={'rgba(0, 0, 0, .25)'}
+              />
+            </View>
+          </TouchableOpacity>
+        }
+
+        {this.props.iap.pro && <View />}
+
         <TouchableOpacity style={styles.settingsButton} ref={c => this.button = c} onPress={this.showPopover} testID="settings-button">
           <View>
-            <Icon name="widget" size={28} color="rgba(0, 0, 0, .25)" />
+            <Icon
+              name="widget"
+              size={28}
+              color={this.state.isVisible ? 'rgba(255, 255, 255, .75)' : 'rgba(0, 0, 0, .25)'}
+            />
           </View>
         </TouchableOpacity>
 
@@ -76,11 +101,13 @@ export default class Nav extends Component {
           placement="bottom"
           onClose={this.closePopover}
         >
-
           <View style={{ height: this.state.popupHeight, width: windowWidth * 0.75 }}>
-            <Settings settings={this.props.settings} onChange={this.props.onSettingsChange} />
+            <Settings
+              iap={this.props.iap}
+              settings={this.props.settings}
+              onChange={this.props.onSettingsChange}
+            />
           </View>
-
         </Popover>
       </View>
     );

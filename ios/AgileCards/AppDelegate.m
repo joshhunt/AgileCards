@@ -18,20 +18,7 @@
 {
   NSURL *jsCodeLocation;
   
-  for (NSString* family in [UIFont familyNames])
-  {
-    NSLog(@"%@", family);
-    for (NSString* name in [UIFont fontNamesForFamilyName: family])
-    {
-      NSLog(@" %@", name);
-    }
-  }
-  
-#ifdef DEBUG
-  jsCodeLocation = [NSURL URLWithString:@"http://josh.local:8081/index.ios.bundle?platform=ios&dev=true"];
-#else
   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
-#endif
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"AgileCards"
