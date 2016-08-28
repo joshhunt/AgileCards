@@ -38,7 +38,7 @@ export default class Settings extends Component {
 
   constructor(props) {
     super(props);
-    this.state = props.settings;
+    this.state = { ...props.settings };
     this.state.maxCardChoices = MAX_CARD_OPTIONS[this.state.cardSequence];
     this.state.colorOptionsTint = TINT_FOR_COLOR[this.state.color];
   }
@@ -86,6 +86,7 @@ export default class Settings extends Component {
       maxCard: this.state.maxCard,
       color: this.state.color,
       displayEmoji: this.state.displayEmoji,
+      emoji: this.state.emoji,
     });
   }
 

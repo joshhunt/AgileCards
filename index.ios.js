@@ -34,6 +34,20 @@ class AgileCards extends Component {
 
     // AsyncStorage.setItem('settings', JSON.stringify(this.state.settings));
 
+    AsyncStorage.getItem('iap')
+      .then((result) => {
+        if (!result) {
+          this.setState({ iap: { pro: false } });
+          return;
+        }
+
+        try {
+          this.setState({ iap: JSON.parse(result) });
+        } catch (e) {
+          this.setState({ iap: { pro: false } });
+        }
+      });
+
     AsyncStorage.getItem('settings')
       .then((settings) => {
         if (!settings) return;
@@ -61,19 +75,18 @@ class AgileCards extends Component {
   }
 
   onEmojiSelect = (newEmoji) => {
-    console.log('selected emoji', newEmoji);
     this.onSettingsChange({ ...this.state.settings, emoji: newEmoji });
     this.setState({ displayEmojiPicker: false });
   }
 
   render() {
-    console.log('displayEmojiPicker:', this.state.displayEmojiPicker);
     return (
       <View testID="root-view">
-        { this.state.loaded && <CardSwiper openEmojiPicker={this.openEmojiPicker} settings={this.state.settings} /> }
+        { this.state.loaded && this.state.iap && <CardSwiper openEmojiPicker={this.openEmojiPicker} settings={this.state.settings} /> }
         <Nav settings={this.state.settings} onSettingsChange={this.onSettingsChange} />
-        <Modal isOpen={this.state.displayEmojiPicker}>
-          { this.state.displayEmojiPicker && <EmojiPicker onSelect={this.onEmojiSelect} /> }
+
+        <Modal isOpen={this.state.displayEmojiPicker} swipeToClose={false} swipeArea={1}>
+          <EmojiPicker onSelect={this.onEmojiSelect} />
         </Modal>
       </View>
     );

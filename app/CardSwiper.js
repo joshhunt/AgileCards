@@ -9,7 +9,7 @@ import {
 import Swiper from 'react-native-swiper';
 import Card from './Card';
 import EmojiCard from './EmojiCard';
-import { CARDS_FOR_SEQUENCE, COLORS } from './settingsValues';
+import { CARDS_FOR_SEQUENCE, COLORS, EMOJI_CARD } from './settingsValues';
 
 const styles = StyleSheet.create({
   dot: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 //   { content: "💩", color: '#16405B' },
 // ];
 
-function cardsForSettings({ cardSequence, maxCard }) {
+function cardsForSettings({ cardSequence, maxCard, displayEmoji }) {
   let maxReached = false;
 
   const cards = CARDS_FOR_SEQUENCE[cardSequence]
@@ -58,6 +58,10 @@ function cardsForSettings({ cardSequence, maxCard }) {
 
       return !maxReached;
     });
+
+  if (displayEmoji) {
+    cards.push(EMOJI_CARD);
+  }
 
   return cards;
 }
@@ -75,7 +79,7 @@ export default function CardSwiper({ settings, openEmojiPicker }) {
   return (
     <Swiper {...swiperProps} testID="swiper">
       {allCards.map((cardData, index) => {
-        if (cardData === 'emoji-picker') {
+        if (cardData === EMOJI_CARD) {
           return <EmojiCard key="emoji-picker" settings={settings} colors={colors[index]} openEmojiPicker={openEmojiPicker} />;
         }
 

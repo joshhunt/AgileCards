@@ -7,8 +7,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-// import Emoji from './Emoji';
-
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
@@ -60,7 +58,6 @@ export default class EmojiCard extends React.Component {
       <View style={[styles.slide, { backgroundColor: this.props.colors.bg }]}>
         <TouchableOpacity onPress={this.props.openEmojiPicker}>
           <View style={styles.emojiMask} >
-            {/*<Emoji size={250} name={'point_left_tone2'} />*/}
             <Image
               style={styles.pickerEmoji}
               source={{ uri: emojiUrl(this.props.settings.emoji) }}

@@ -1,5 +1,6 @@
-import React from 'react';
 import * as colors from './colors';
+
+export const EMOJI_CARD = 'special-emoji-card';
 
 export const FIBONACCI = 'fibonacci';
 export const TSHIRT_SIZING = 'tshirt-sizing';
@@ -26,10 +27,9 @@ export const SEQUENCE_OPTIONS = [
 ];
 
 export const CARDS_FOR_SEQUENCE = {
-  [PLANNING_POKER]: ['emoji-picker', '0', '½', '1', '2', '3', '5', '8', '13', '20', '40', '100'],
-  [FIBONACCI]: ['emoji-picker', '0', '1', '2', '3', '5', '8', '13', '21', '34', '55'],
-  [TSHIRT_SIZING]: ['emoji-picker', 'XS', 'S', 'M', 'L', 'XL'],
-  [EMOJIS]: ['emoji-picker', '🤔', '😀', '😂', '😭'],
+  [PLANNING_POKER]: ['0', '½', '1', '2', '3', '5', '8', '13', '20', '40', '100'],
+  [FIBONACCI]: ['0', '1', '2', '3', '5', '8', '13', '21', '34', '55'],
+  [TSHIRT_SIZING]: ['XS', 'S', 'M', 'L', 'XL'],
 };
 
 export const MAX_CARD_OPTIONS = {

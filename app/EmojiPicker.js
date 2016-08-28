@@ -3,46 +3,32 @@ import React from 'react';
 import {
   StyleSheet,
   View,
+  Image,
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
 
-import {
-    LazyloadScrollView,
-    LazyloadView,
-    LazyloadImage,
-} from 'react-native-lazyload';
-
-import emojisJson from 'emojione/emoji.json';
 import _ from 'lodash';
+import Swiper from 'react-native-swiper';
+import emojisJson from 'emojione/emoji.json';
+import emojiBlacklist from './emojiBlacklist.json';
 
-const offsetHeight = 60;
-const offsetWidth = 30;
 const { height: windowHeight, width: windowWidth } = Dimensions.get('window');
 
-const emojisList = _.filter(emojisJson, ({ category }) => category === 'people');
+const emojisList = _(emojisJson)
+  .filter(({ unicode, category }) => category === 'people' && !emojiBlacklist.includes(unicode))
+  .sortBy(({ emoji_order }) => parseInt(emoji_order, 10))
+  .value();
 
+const EMOJI_SIZE = 50;
+const EMOJI_MARGIN = 10;
 
 const styles = StyleSheet.create({
   pickerEmoji: {},
 
   overlay: {
-    flex: 1,
-    margin: 20,
-    // position: 'absolute',
-    // top: offsetHeight,
-    // left: offsetWidth,
-    // width: windowWidth - (offsetWidth * 2),
-    // height: windowHeight - (offsetHeight * 2),
-    // backgroundColor: 'white',
-    // zIndex: 1,
-    // flexWrap: 'wrap',
-    // flexDirection: 'row',
-    // borderRadius: 10,
-    // shadowColor: 'black',
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowRadius: 2,
-    // shadowOpacity: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   scroll: {
@@ -54,12 +40,16 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingTop: EMOJI_MARGIN * 3,
+    paddingBottom: EMOJI_MARGIN * 3,
+    marginLeft: EMOJI_MARGIN,
+    marginRight: EMOJI_MARGIN,
   },
 
   item: {
-    margin: 10,
-    width: 50,
-    height: 50,
+    margin: EMOJI_MARGIN,
+    width: EMOJI_SIZE,
+    height: EMOJI_SIZE,
   },
 });
 
@@ -68,34 +58,57 @@ const emojiUrl = (unicode) => (
 );
 
 export default class EmojiCard extends React.Component {
-  state = {
-    pickerOpen: false,
+  state = { emojisToFuckoff: [] };
+
+  onPressButton = (emoji) => {
+    const emojisToFuckoff = this.state.emojisToFuckoff.concat(emoji);
+    console.log(JSON.stringify(emojisToFuckoff));
+    this.setState({ emojisToFuckoff });
   };
 
-  onPressButton = () => {
-    this.setState({ pickerOpen: !this.state.pickerOpen });
-  };
+  makePages = () => {
+    const input = _.clone(emojisList);
+    const pagedEmojis = [];
+
+    const emojiSize = (EMOJI_SIZE + (EMOJI_MARGIN * 2));
+
+    const pageHeight = windowHeight - (EMOJI_MARGIN * 6);
+    const pageWidth = windowWidth - (EMOJI_MARGIN * 2);
+
+    const canFitInHeight = Math.floor(pageHeight / emojiSize);
+    const canFitInWidth = Math.floor(pageWidth / emojiSize);
+    const emojisOnEachPage = canFitInHeight * canFitInWidth;
+
+    while (input.length > 0) {
+      pagedEmojis.push(input.splice(0, emojisOnEachPage));
+    }
+
+    const pages = pagedEmojis.map((emojis, pageIndex) => (
+      <View key={pageIndex} style={styles.list}>
+        {emojis.map((emoji, emojiIndex) => (
+          <View key={emojiIndex} style={styles.item}>
+            <TouchableOpacity onPress={this.props.onSelect.bind(null, emoji.unicode)} >
+              <Image
+                style={styles.pickerEmoji}
+                source={{ uri: emojiUrl(emoji.unicode) }}
+                width={EMOJI_SIZE}
+                height={EMOJI_SIZE}
+              />
+            </TouchableOpacity>
+          </View>
+        ))}
+      </View>
+    ));
+
+    return pages;
+  }
 
   render() {
     return (
       <View style={styles.overlay}>
-        <LazyloadScrollView name="emoji-picker" style={[styles.scroll]} contentContainerStyle={styles.list}>
-          {emojisList.map((emo) => {
-            return (
-              <LazyloadView host="emoji-picker" style={styles.item} key={emo.unicode}>
-                <TouchableOpacity onPress={this.props.onSelect.bind(null, emo.unicode)} >
-                  <LazyloadImage
-                    host="emoji-picker"
-                    style={styles.pickerEmoji}
-                    source={{ uri: emojiUrl(emo.unicode) }}
-                    width={50}
-                    height={50}
-                  />
-                </TouchableOpacity>
-              </LazyloadView>
-            );
-          })}
-        </LazyloadScrollView>
+        <Swiper loadMinimal loadMinimalSize={1} showButtons={false} testID="emojiSwiper">
+          {this.makePages()}
+        </Swiper>
       </View>
     );
   }
