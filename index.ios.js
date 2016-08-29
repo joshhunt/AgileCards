@@ -4,9 +4,11 @@ import {
   AppRegistry,
   View,
   AsyncStorage,
+  NativeModules,
 } from 'react-native';
 
 import Modal from 'react-native-modalbox';
+
 
 import CardSwiper from './app/CardSwiper';
 import Nav from './app/Nav';
@@ -16,6 +18,8 @@ import PlusUpsell, { UPSELL_WIDTH, UPSELL_HEIGHT } from './app/PlusUpsell';
 import { FIBONACCI, COLOR_BLUE } from './app/settingsValues';
 
 console.disableYellowBox = true;
+
+const { InAppUtils } = NativeModules;
 
 class AgileCards extends Component {
 
@@ -64,6 +68,15 @@ class AgileCards extends Component {
         }
       })
       .done();
+
+    const products = [
+      'is.joshhunt.agileCards.iap.plus',
+    ];
+
+    InAppUtils.loadProducts(products, (error, _products) => {
+      console.log(error);
+      console.log(_products);
+    });
   }
 
   onSettingsChange = (newSettings) => {

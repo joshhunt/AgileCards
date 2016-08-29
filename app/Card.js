@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
 
   text: {
     color: '#fff',
+    fontFamily: 'Avenir Next',
     fontSize: 200,
   },
 });
