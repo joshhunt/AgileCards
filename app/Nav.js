@@ -70,6 +70,7 @@ export default class Nav extends Component {
   render() {
     return (
       <View style={styles.root}>
+        {/*
         { !this.props.iap.pro &&
           <TouchableOpacity style={styles.proButton} ref={c => this.button = c} onPress={this.props.showPlus} testID="pro-button">
             <View>
@@ -83,6 +84,9 @@ export default class Nav extends Component {
         }
 
         {this.props.iap.pro && <View />}
+        */}
+
+        <View />
 
         <TouchableOpacity style={styles.settingsButton} ref={c => this.button = c} onPress={this.showPopover} testID="settings-button">
           <View>

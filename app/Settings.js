@@ -21,6 +21,7 @@ import {
   COLOR_OPTIONS,
   TINT_FOR_COLOR,
 } from './settingsValues';
+import { PLUS_ENABLED } from './Globals';
 
 const segmentedControlsProps = {
   containerStyle: { flex: 1, height: 28 },
@@ -138,7 +139,7 @@ export default class Settings extends Component {
             </CustomCell>
           </Section>
 
-          <Section
+          { PLUS_ENABLED && <Section
             header="EXTRAS"
             sectionTintColor="white"
             footer={hasPurchasedPro ? 'Thanks for your support!' : 'Purchase pro to unlock'}
@@ -151,7 +152,8 @@ export default class Settings extends Component {
                 onValueChange={this.onDisplayEmojiChange}
               />
             </CustomCell>
-          </Section>
+          </Section> }
+
         </TableView>
       </ScrollView>
     );

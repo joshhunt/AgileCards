@@ -18,11 +18,11 @@
 {
   NSURL *jsCodeLocation;
   
-#ifdef DEBUG
-  jsCodeLocation = [NSURL URLWithString:@"http://josh.local:8081/index.ios.bundle?platform=ios&dev=true"];
-#else
+//#ifdef DEBUG
+//  jsCodeLocation = [NSURL URLWithString:@"http://josh.local:8081/index.ios.bundle?platform=ios&dev=true"];
+//#else
   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
-#endif
+//#endif
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"AgileCards"

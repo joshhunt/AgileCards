@@ -4,7 +4,7 @@ import {
   AppRegistry,
   View,
   AsyncStorage,
-  NativeModules,
+  // NativeModules,
 } from 'react-native';
 
 import Modal from 'react-native-modalbox';
@@ -16,10 +16,11 @@ import EmojiPicker from './app/EmojiPicker';
 import PlusUpsell, { UPSELL_WIDTH, UPSELL_HEIGHT } from './app/PlusUpsell';
 
 import { FIBONACCI, COLOR_BLUE } from './app/settingsValues';
+import { PLUS_ENABLED } from './app/Globals';
 
 console.disableYellowBox = true;
 
-const { InAppUtils } = NativeModules;
+// const { InAppUtils } = NativeModules;
 
 class AgileCards extends Component {
 
@@ -33,7 +34,7 @@ class AgileCards extends Component {
         cardSequence: FIBONACCI,
         maxCard: '13',
         color: COLOR_BLUE,
-        displayEmoji: true,
+        displayEmoji: false,
         emoji: '1f61d',
       },
     };
@@ -69,14 +70,14 @@ class AgileCards extends Component {
       })
       .done();
 
-    const products = [
-      'is.joshhunt.agileCards.iap.plus',
-    ];
+    // const products = [
+    //   'is.joshhunt.agileCards.iap.plus',
+    // ];
 
-    InAppUtils.loadProducts(products, (error, _products) => {
-      console.log(error);
-      console.log(_products);
-    });
+    // InAppUtils.loadProducts(products, (error, _products) => {
+    //   console.log(error);
+    //   console.log(_products);
+    // });
   }
 
   onSettingsChange = (newSettings) => {
